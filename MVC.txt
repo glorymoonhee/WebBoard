@@ -1,0 +1,59 @@
+
+
+           M                   V                      C
+         Model                View                 Controller:Servlet
+         
+         User                 Html
+         Post                 css
+         Tag                  Javascript
+                              Jsp
+         
+         
+         User -1---*- Post  -*----*- Tag
+         
+ 
+1980년도 아키텍처 GUI
+
+
+uri     ----- processing model
+
+"/board" --- BoardController.java
+
+
+Model 1
+                            *.jsp   ----------. JDBC db query
+
+Model 2
+
+                            req----->  ControllerServet uri를 보고 어떻게 처리할지를 결정합니다.
+                            
+                            
+                            
+          Controller                        Model                                           View    
+                                                                                                     
+          Servlet ( ****Controller)      (***Service) -> model을 생성, 수정, 삭제                           JSP, HTML 
+          
+                                                 |
+                                                 |
+                                                 |
+                                                 v
+                                               D A O ( Data access Object)
+                                               UserDao.insert(....)
+                                               :: 데이터베이스에 자료를 넣고 빼는 일을 전담합니다.
+                                               
+회원가입
+uri:   /board/join    -> join.jsp
+
+로그인
+uri   /board/login
+
+
+GET    /board/view/3283838  읽어올때  - 시스템의 상태 변경을 초래하지 않는 경우 
+POST   추가할때? 시스템에 상태 변경을 야기하는 리소스 요청
+PUT    /board/free/309993  갱신할때 - 업데이트, 삭제
+DELETE /board/free/338181
+
+GET   /board/view?id=3283838
+  
+  
+lazy loading - 
